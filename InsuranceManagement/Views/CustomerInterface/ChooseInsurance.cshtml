@@ -1,0 +1,71 @@
+﻿@model IEnumerable<InsuranceManagement.Models.Insurance>
+
+@{
+    ViewBag.Title = "ChooseInsurance";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+@{
+    int customerId = ViewBag.custommerId ?? 0;
+}
+
+<br />
+<br />
+<h2>Choose Insurance</h2>
+
+@using (Html.BeginForm("SearchInsurance", "UserInterface", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <div class="input-group">
+        @Html.TextBox("searchQuery", null, new { @class = "form-control", placeholder = "Search" })
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+    </div>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Years Of Payment
+        </th>
+        <th>
+            Payment Per Year
+        </th>
+        <th>
+            Refund
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearsOfPayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentPerYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Refund)
+            </td>
+            <td>
+                @Html.ActionLink("Buy", "ChooseAgent", new { id = item.InsuranceId, customerId = ViewBag.custommerId })
+            </td>
+        </tr>
+    }
+
+</table>

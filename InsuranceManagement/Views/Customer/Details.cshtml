@@ -1,0 +1,110 @@
+﻿@model InsuranceManagement.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@{
+    var contract = ViewData["contract"]
+        as InsuranceManagement.Models.Contract;
+}
+
+<h2>Customer's Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+    </dl>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            <label for="@Html.DisplayNameFor(model => contract.Agent)">Agent Name</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => contract.Insurance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => contract.SigningDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => contract.ExpirationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => contract.Proof)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Contracts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agent.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Insurance.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SigningDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proof)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Contract", new { id = item.ContractId})">Show Contract</a>
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,59 @@
+﻿@model InsuranceManagement.Models.Customer
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<br />
+<div class="container">
+    <br />
+    <h2>Customer Information: @Html.DisplayFor(model => model.Name)</h2>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-3">
+            Name:
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-sm-3">
+            Phone Number:
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt class="col-sm-3">
+            Address:
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt class="col-sm-3">
+            Email:
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+    </dl>
+</div>
+
+<div class="container">
+    <p>
+        <label>
+            Update Information Here: @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }, new { @class = "btn btn-default" })
+        </label>
+        <br />
+        <label>
+            See All Your Contracts Here: @Html.ActionLink("Show Contracts", "ShowContract", new { id = Model.CustomerId }, new { @class = "btn btn-default" })
+        </label>
+        <br />
+        <label>
+            Buy Insurance Here: @Html.ActionLink("Choose Insurance", "ChooseInsurance", new { id = Model.CustomerId }, new { @class = "btn btn-default" })
+        </label>
+    </p>
+</div>

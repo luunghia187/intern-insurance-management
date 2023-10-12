@@ -1,0 +1,76 @@
+﻿@model IEnumerable<InsuranceManagement.Models.Contract>
+
+@{
+    ViewBag.Title = "ShowContract";
+    Layout = "~/Views/Shared/_AgentLayout.cshtml";
+}
+
+<br />
+<h2>Show Contract</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Agent.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Insurance.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SigningDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpirationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Agent.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Insurance.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SigningDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpirationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proof)
+        </td>
+        <td>
+            @if (item.Status.ToString() == "Buying") 
+            {
+                <a href="@Url.Action("SellContract", "AgentInterface", new {contractId = item.ContractId, agentId = item.AgentId })" class="btn btn-primary">Sell</a>
+            } else 
+            {
+                @Html.DisplayFor(modelItem => item.Status)
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to home", "Index", new { id = ViewBag.AccountId })
+</div>
+
+

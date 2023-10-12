@@ -1,0 +1,67 @@
+﻿@model InsuranceManagement.Models.Contract
+
+@{
+    ViewBag.Title = "ConfirmContract";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<hr />
+<h2>Confirm Contract</h2>
+
+
+@using (Html.BeginForm("CreateContract", "CustomerInterface", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.HiddenFor(model => model.CustomerId)
+    @Html.HiddenFor(model => model.AgentId)
+    @Html.HiddenFor(model => model.InsuranceId)
+    @Html.HiddenFor(model => model.SigningDate)
+    @Html.HiddenFor(model => model.ExpirationDate)
+    @Html.HiddenFor(model => model.Status)
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerId, "Customer Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.CustomerName
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AgentId, "Agent Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.AgentName
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.InsuranceId, "Insurance Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.InsuranceName
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SigningDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.SigningDate)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExpirationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.ExpirationDate)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<InsuranceManagement.Models.Insurance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Insurances</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearsOfPayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentPerYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Refund)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearsOfPayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentPerYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Refund)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InsuranceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InsuranceId })
+        </td>
+    </tr>
+}
+
+</table>

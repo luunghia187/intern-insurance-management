@@ -1,0 +1,73 @@
+﻿@model InsuranceManagement.Models.Contract
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Contract's Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Agent.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agent.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Insurance.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Insurance.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SigningDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SigningDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpirationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpirationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContractId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
