@@ -120,7 +120,11 @@ namespace InsuranceManagement.Controllers
 
         public ActionResult Search(String searchQuery)
         {
-            return Content(searchQuery);
+            var contracts = db.Contracts.Where(c => c.Agent.Name.Contains(searchQuery)
+                                                || c.Customer.Name.Contains(searchQuery)).OrderByDescending(c => c.SigningDate);
+            int pageSize = 5;
+            int pageNumber = 1;
+            return View("Index", contracts.ToPagedList(pageNumber, pageSize));
         }
     }
 }
