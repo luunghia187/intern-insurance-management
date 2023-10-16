@@ -38,33 +38,6 @@ namespace InsuranceManagement.Controllers
             return View(contract);
         }
 
-        //public ActionResult Create()
-        //{
-        //    ViewBag.AgentId = new SelectList(db.Agents, "AgentId", "Name");
-        //    ViewBag.CustomerId = new SelectList(db.Custommers, "CustomerId", "Name");
-        //    ViewBag.InsuranceId = new SelectList(db.Insurances, "InsuranceId", "Name");
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(Contract contract)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Contracts.Add(contract);
-        //        Insurance insurance = db.Insurances.Find(contract.InsuranceId);
-        //        contract.ExpirationDate = contract.SigningDate.AddYears(insurance.YearsOfPayment);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    ViewBag.AgentId = new SelectList(db.Agents, "AgentId", "Name", contract.AgentId);
-        //    ViewBag.CustomerId = new SelectList(db.Custommers, "CustomerId", "Name", contract.CustomerId);
-        //    ViewBag.InsuranceId = new SelectList(db.Insurances, "InsuranceId", "Name", contract.InsuranceId);
-        //    return View(contract);
-        //}
-
 
         public ActionResult Delete(int? id)
         {

@@ -64,7 +64,8 @@ namespace InsuranceManagement.Controllers
             bool isExists = db.Accounts.Any(acc => acc.AccountName == registerCustomer.Account.AccountName);
             if (isExists)
             {
-                return View("RegisterError");
+                ViewData["ErrorMessage"] = "Register Failed. Account Name is already exit!.";
+                return View("Register",registerCustomer);
             }
 
             if (ModelState.IsValid)
@@ -91,7 +92,9 @@ namespace InsuranceManagement.Controllers
             bool isExists = db.Accounts.Any(acc => acc.AccountName == registerAgent.Account.AccountName);
             if (isExists)
             {
-                return View("RegisterError");
+                ViewBag.Role = "Agent";
+                ViewData["ErrorMessage"] = "Register Failed. Account Name is already exit!.";
+                return View("Register", registerAgent);
             }
 
             if (ModelState.IsValid)
