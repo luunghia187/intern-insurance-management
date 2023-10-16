@@ -17,7 +17,7 @@ namespace InsuranceManagement.Controllers
 
         public ActionResult Index()
         {
-            var accounts = db.Accounts.Include(a => a.Role);
+            var accounts = db.Accounts;
             return View(accounts.ToList());
         }
 

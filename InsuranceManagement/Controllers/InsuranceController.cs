@@ -69,7 +69,7 @@ namespace InsuranceManagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InsuranceId,Name,Description,YearsOfPayment,PaymentPerYear,Refund")] Insurance insurance)
+        public ActionResult Edit(Insurance insurance)
         {
             if (ModelState.IsValid)
             {

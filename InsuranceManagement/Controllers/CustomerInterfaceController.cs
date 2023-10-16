@@ -134,7 +134,7 @@ namespace InsuranceManagement.Controllers
             ViewBag.CustomerId = customerId;
             ViewBag.InsuranceId = insuranceId;
             var agents = db.Agents.Where(a => a.Name.Contains(searchQuery)).ToList();
-            return View("chooseagent", agents);
+            return View("ChooseAgent", agents);
         }
     }
 }
