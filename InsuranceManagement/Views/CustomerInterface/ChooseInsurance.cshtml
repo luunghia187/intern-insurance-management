@@ -12,7 +12,7 @@
 <br />
 <h2>Choose Insurance</h2>
 
-@using (Html.BeginForm("SearchInsurance", "UserInterface", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+@using (Html.BeginForm("SearchInsurance", "CustomerInterface",new { id = ViewBag.custommerId }, FormMethod.Get, new { @class = "form-inline", role = "form" }))
 {
     <div class="input-group">
         @Html.TextBox("searchQuery", null, new { @class = "form-control", placeholder = "Search" })

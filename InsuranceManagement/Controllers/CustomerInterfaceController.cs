@@ -113,7 +113,6 @@ namespace InsuranceManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                //return Content(contract.SigningDate.ToString());
                 db.Contracts.Add(contract);
                 db.SaveChanges();
                 Customer customer = db.Custommers.Find(contract.CustomerId);
@@ -121,6 +120,21 @@ namespace InsuranceManagement.Controllers
             }
 
             return Content(contract.CustomerId.ToString());
+        }
+
+        public ActionResult SearchInsurance(string searchQuery, int id)
+        {
+            ViewBag.custommerId = id;
+            var Insurances = db.Insurances.Where(i => i.Name.Contains(searchQuery));
+            return View("ChooseInsurance",Insurances.ToList());
+        }
+
+        public ActionResult SearchAgent(string searchQuery, int customerId, int insuranceId)
+        {
+            ViewBag.CustomerId = customerId;
+            ViewBag.InsuranceId = insuranceId;
+            var agents = db.Agents.Where(a => a.Name.Contains(searchQuery)).ToList();
+            return View("chooseagent", agents);
         }
     }
 }

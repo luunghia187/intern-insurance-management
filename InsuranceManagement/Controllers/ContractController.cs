@@ -118,7 +118,7 @@ namespace InsuranceManagement.Controllers
             return View("Index",contracts.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Search(String searchQuery)
+        public ActionResult Search(string searchQuery)
         {
             var contracts = db.Contracts.Where(c => c.Agent.Name.Contains(searchQuery)
                                                 || c.Customer.Name.Contains(searchQuery)).OrderByDescending(c => c.SigningDate);
